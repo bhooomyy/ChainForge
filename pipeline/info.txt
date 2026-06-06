@@ -1,0 +1,7 @@
+selected resource name:		pipeline1
+selected resource type:		pipeline
+factory name:			azuredatafactory-supplychain
+factory location:		canadacentral
+subscription id:		44497d3e-523a-4d7a-80a1-64515a2585fb
+data flow session id:		9b0ebc3f-bcd0-4346-a469-0427a04b46b0
+time of download (UTC):		Sat, 06 Jun 2026 00:18:57 GMT

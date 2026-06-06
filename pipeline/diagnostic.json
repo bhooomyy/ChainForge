@@ -1,0 +1,24 @@
+{
+    "now": "2026-06-06T00:18:57.520Z",
+    "perfNow": 66632799,
+    "diagnosticCorrelation": "7718b910-16b4-4be4-9529-34a87978ea06",
+    "source": "DownloadSupportFiles",
+    "environment": {
+        "productName": "adf",
+        "buildVersion": "1.0.051926.1",
+        "environmentType": 3,
+        "resourceName": "azuredatafactory-supplychain",
+        "resourceRegion": "canadacentral",
+        "resourceGroup": "supplychain_project",
+        "subscriptionId": "44497d3e-523a-4d7a-80a1-64515a2585fb",
+        "sessionId": "n/PhWm/iZ5V+yDqqqlfoV5",
+        "operationId": "",
+        "gitType": "live",
+        "loggingKey": "461b5b8f-76ce-443c-ade2-d33798c2a64f"
+    },
+    "additionalInfo": {
+        "selectedResource": "pipeline1",
+        "selectedResourceType": "pipeline",
+        "dataFlowSessionId": "9b0ebc3f-bcd0-4346-a469-0427a04b46b0"
+    }
+}
