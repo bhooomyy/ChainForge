@@ -110,7 +110,7 @@ sourcesupplychaindataset/
 ![Processed Folder](Dashboard/Screenshots/ProcessedSilverLayer.png)
 
 ### Output Folder
-![Output Folder](Dashboard/Screenshots/OutputGoldLyer.png)
+![Output Folder](Dashboard/Screenshots/OutputGoldLayer.png)
 
 ---
 
@@ -282,7 +282,7 @@ All other 37 columns:
 6-page interactive dashboard connected to `output/supplychain_final.csv` via Azure Data Lake Gen2.
 
 ### Power BI Data Model
-![Power BI Model](Dashboard/Screenshots/powerbi_model.png)
+![Power BI Model](Dashboard/powerbi_model.png)
 
 > Date Table created in DAX and linked to `order date` column for all time intelligence measures.
 
