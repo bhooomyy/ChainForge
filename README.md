@@ -51,8 +51,8 @@ Power BI — 6-page interactive dashboard
 |---|---|
 | Cloud Storage | Azure Data Lake Storage Gen2 |
 | Orchestration | Azure Data Factory |
-| Transformation | ADF Data Flow (Apache Spark) |
-| Visualization | Power BI (app.powerbi.com) |
+| Transformation | ADF Data Flow |
+| Visualization | Power BI |
 | Languages | Python, DAX |
 | Python Libraries | pandas, pyarrow, pandavro |
 
@@ -88,6 +88,8 @@ sourcesupplychaindataset/
 │   ├── supplychain_2015.csv
 │   ├── supplychain_2016.parquet
 │   ├── supplychain_2017.avro
+│   ├── DataCoSupplyChainDataset.csv
+│   ├── DescriptionCoSupplyChain.csv
 │   └── supplychain_2018.json
 ├── processed/                        ← copied by ADF pipeline
 │   ├── supplychain_2015.csv
@@ -99,19 +101,16 @@ sourcesupplychaindataset/
 ```
 
 ### ADLS Containers
-![ADLS Containers](screenshots/adls_containers.png)
-
-### Container Folders (raw / processed / output)
-![Container Folders](screenshots/adls_container_folders.png)
+![ADLS Containers](Dashboard/Screenshots/Container.png)
 
 ### Raw Folder
-![Raw Folder](screenshots/adls_raw.png)
+![Raw Folder](Dashboard/Screenshots/RawBronzeLayer.png)
 
 ### Processed Folder
-![Processed Folder](screenshots/adls_processed.png)
+![Processed Folder](Dashboard/Screenshots/ProcessedSilverLayer.png)
 
 ### Output Folder
-![Output Folder](screenshots/adls_output.png)
+![Output Folder](Dashboard/Screenshots/OutputGoldLyer.png)
 
 ---
 
@@ -148,7 +147,7 @@ sourcesupplychaindataset/
 - Integration Runtime: debugpool-8Cores-General (Canada Central)
 
 ### Pipeline Run — All Succeeded
-![Pipeline Run](screenshots/pipeline_run.png)
+![Pipeline Run](Dashboard/Screenshots/Pipeline.png)
 
 ---
 
@@ -156,7 +155,7 @@ sourcesupplychaindataset/
 
 ### Data Flow: DF_SupplyChain
 
-![Data Flow](screenshots/dataflow.png)
+![Data Flow](Dashboard/Screenshots/DataFlow.png)
 
 | Step | Transformation | Purpose |
 |---|---|---|
@@ -290,7 +289,7 @@ All other 37 columns:
 ---
 
 ### Page 1 — Executive Summary
-![Executive Summary](screenshots/executive_summary.png)
+![Executive Summary](Dashboard/Executive Summary.png)
 
 **KPIs:** Total Revenue ($4.29M) · Total Orders (21K) · Late Delivery Rate (54.52%) · Profit Margin (10.94%) · Total Profit (469K)
 
@@ -301,7 +300,7 @@ All other 37 columns:
 ---
 
 ### Page 2 — Sales & Revenue
-![Sales & Revenue](screenshots/sales_revenue.png)
+![Sales & Revenue](Dashboard/Sales&Revenue.png)
 
 **KPIs:** MoM Growth (0.86%) · YoY Growth (43.47%) · Cumulative Revenue YTD (36.44K) · Avg Order Value ($203.85) · Total Discount Given ($979.43K)
 
@@ -312,7 +311,7 @@ All other 37 columns:
 ---
 
 ### Page 3 — Delivery Performance
-![Delivery Performance](screenshots/delivery_performance.png)
+![Delivery Performance](Dashboard/DeliveryPerformance.png)
 
 **KPIs:** On Time Rate (17.65%) · Avg Delay Days (2) · Shipping Efficiency (84.16%) · Canceled Orders (4.60%) · Late by Shipping Mode (54.52%)
 
@@ -325,7 +324,7 @@ All other 37 columns:
 ---
 
 ### Page 4 — Customer Analysis
-![Customer Analysis](screenshots/customer_analysis.png)
+![Customer Analysis](Dashboard/CustomerAnalysis.png)
 
 **KPIs:** Unique Customers (7K) · Revenue per Customer ($601.12) · Revenue by Segment ($4.29M) · Repeat Customers (3K) · Repeat Customer Rate (45.34%)
 
@@ -337,7 +336,7 @@ All other 37 columns:
 ---
 
 ### Page 5 — Product Analysis
-![Product Analysis](screenshots/product_analysis.png)
+![Product Analysis](Dashboard/ProductAnalysis.png)
 
 **KPIs:** Total Products (117) · Avg Product Price ($140.48) · Total Discount ($979.43K) · Profit per Product ($4.01K) · Discount Impact (22.84%)
 
@@ -348,7 +347,7 @@ All other 37 columns:
 ---
 
 ### Page 6 — Regional Analysis
-![Regional Analysis](screenshots/regional_analysis.png)
+![Regional Analysis](Dashboard/RegionalAnalysis.png)
 
 **KPIs:** Top Market (Europe) · Top Region (Western Europe) · Top Region by Profit (Central America) · Highest Late Rate (East Africa)
 
@@ -565,4 +564,4 @@ pip install pandas pyarrow pandavro
 
 **Bhoomi**
 Data Analyst | Azure | Power BI | Python
-[GitHub](https://github.com/bhooomyy) · [LinkedIn](#)
+[GitHub](https://github.com/bhooomyy) · [LinkedIn](https://www.linkedin.com/in/bhatt-bhoomi/) · [Website](https://bhooomyy.github.io)
