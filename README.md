@@ -282,14 +282,14 @@ All other 37 columns:
 6-page interactive dashboard connected to `output/supplychain_final.csv` via Azure Data Lake Gen2.
 
 ### Power BI Data Model
-![Power BI Model](screenshots/powerbi_model.png)
+![Power BI Model](Dashboard/Screenshots/powerbi_model.png)
 
 > Date Table created in DAX and linked to `order date` column for all time intelligence measures.
 
 ---
 
 ### Page 1 — Executive Summary
-![Executive Summary](Dashboard/Executive Summary.png)
+![Executive Summary](Dashboard/ExecutiveSummary.png)
 
 **KPIs:** Total Revenue ($4.29M) · Total Orders (21K) · Late Delivery Rate (54.52%) · Profit Margin (10.94%) · Total Profit (469K)
 
