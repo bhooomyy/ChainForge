@@ -101,16 +101,16 @@ sourcesupplychaindataset/
 ```
 
 ### ADLS Containers
-![ADLS Containers](Dashboard/screenshots/Container.png)
+![ADLS Containers](Dashboard/Screenshots/Container.png)
 
 ### Raw Folder
-![Raw Folder](Dashboard/screenshots/RawBronzeLayer.png)
+![Raw Folder](Dashboard/Screenshots/RawBronzeLayer.png)
 
 ### Processed Folder
-![Processed Folder](Dashboard/screenshots/ProcessedSilverLayer.png)
+![Processed Folder](Dashboard/Screenshots/ProcessedSilverLayer.png)
 
 ### Output Folder
-![Output Folder](Dashboard/screenshots/OutputGoldLyer.png)
+![Output Folder](Dashboard/Screenshots/OutputGoldLyer.png)
 
 ---
 
@@ -147,7 +147,7 @@ sourcesupplychaindataset/
 - Integration Runtime: debugpool-8Cores-General (Canada Central)
 
 ### Pipeline Run — All Succeeded
-![Pipeline Run](Dashboard/screenshots/Pipeline.png)
+![Pipeline Run](Dashboard/Screenshots/Pipeline.png)
 
 ---
 
@@ -155,7 +155,7 @@ sourcesupplychaindataset/
 
 ### Data Flow: DF_SupplyChain
 
-![Data Flow](Dashboard/screenshots/DataFlow.png)
+![Data Flow](Dashboard/Screenshots/DataFlow.png)
 
 | Step | Transformation | Purpose |
 |---|---|---|
