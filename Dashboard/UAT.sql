@@ -213,3 +213,46 @@ SELECT
 FROM supplychain
 GROUP BY Customer_Segment
 ORDER BY total_revenue DESC;
+
+
+------------------------- Product Analysis -------------------------
+-- Power BI shows: 117
+SELECT 
+    COUNT(DISTINCT Product_Name) AS total_products
+FROM supplychain;
+
+-- Power BI shows: $979.43K
+SELECT 
+    ROUND(SUM(Order_Item_Quantity * Order_Item_Discount), 2) AS total_discount
+FROM supplychain;
+
+-- Avg Product Price
+SELECT
+    ROUND(AVG(Product_Price), 2) AS Avg_Product_Price
+FROM supplychain;
+
+-- Profit Per Product
+SELECT
+    ROUND(
+        SUM(Order_Profit_Per_Order) 
+        / NULLIF(COUNT(DISTINCT Product_Name), 0), 2
+    ) AS Profit_Per_Product
+FROM supplychain;
+
+-- Discount Impact %
+SELECT
+    ROUND(
+        100.0 * SUM(Order_Item_Quantity * Order_Item_Discount)
+        / NULLIF(SUM(Sales), 0), 2
+    ) AS Discount_Impact_Pct
+FROM supplychain;
+
+-- Power BI shows: Field & Stream $798K top
+SELECT 
+    Product_Name,
+    ROUND(SUM(Sales), 2) AS total_sales,
+    ROUND(SUM(Order_Profit_Per_Order), 2) AS total_profit
+FROM supplychain
+GROUP BY Product_Name
+ORDER BY total_profit DESC
+LIMIT 10;
