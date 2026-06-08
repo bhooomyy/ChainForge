@@ -90,3 +90,38 @@ SELECT
 FROM supplychain
 GROUP BY Delivery_Status
 ORDER BY total_orders DESC;
+
+
+
+------------------------- Sales & Revenue -------------------------
+-- Avg Order Value
+SELECT
+    ROUND(SUM(Sales) / COUNT(*), 2) AS Avg_Order_Value
+FROM supplychain;
+
+-- Cumulative Revenue YTD per year
+SELECT
+    YEAR(order_date)                    AS Year,
+    MONTH(order_date)                   AS Month,
+    ROUND(SUM(Sales), 2)                AS Monthly_Revenue,
+    ROUND(SUM(SUM(Sales)) OVER (
+        PARTITION BY YEAR(order_date)
+        ORDER BY MONTH(order_date)
+    ), 2)                               AS Cumulative_YTD
+FROM supplychain
+GROUP BY YEAR(order_date), MONTH(order_date)
+ORDER BY Year, Month;
+
+-- Total Discount Given
+SELECT
+    ROUND(SUM(Order_Item_Quantity * Order_Item_Discount), 2) AS Total_Discount_Given
+FROM supplychain;
+
+-- Power BI shows: Europe 1.27M, LATAM 1.20M
+SELECT 
+    Market,
+    ROUND(SUM(Sales), 2) AS total_revenue,
+    ROUND(100.0 * SUM(Sales) / SUM(SUM(Sales)) OVER(), 2) AS market_share_pct
+FROM supplychain
+GROUP BY Market
+ORDER BY total_revenue DESC;
