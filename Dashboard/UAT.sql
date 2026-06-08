@@ -57,3 +57,36 @@ IGNORE 1 ROWS;
 
 SELECT COUNT(*) AS total_rows FROM supplychain;
 SELECT * FROM supplychain LIMIT 5;
+
+
+------------------------- Executive Dashboard -------------------------
+-- Power BI shows: $4.29M
+SELECT 
+    ROUND(SUM(Sales), 2) AS total_revenue
+FROM supplychain;
+
+-- Power BI shows: 21K
+SELECT 
+    COUNT(*) AS total_orders
+FROM supplychain;
+
+-- Power BI shows: 54.52%
+SELECT 
+    CONCAT(ROUND(
+        100.0 * COUNT(CASE WHEN Delivery_Status = 'Late delivery' THEN 1 END) / COUNT(*), 2
+    ),'%') AS late_delivery_rate_pct
+FROM supplychain;
+
+-- Power BI shows: 469K
+SELECT 
+    ROUND(SUM(Order_Profit_Per_Order), 2) AS total_profit
+FROM supplychain;
+
+-- Power BI donut chart
+SELECT 
+    Delivery_Status,
+    COUNT(*) AS total_orders,
+    ROUND(100.0 * COUNT(*) / SUM(COUNT(*)) OVER(), 2) AS pct
+FROM supplychain
+GROUP BY Delivery_Status
+ORDER BY total_orders DESC;
