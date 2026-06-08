@@ -169,3 +169,47 @@ SELECT
 FROM supplychain
 GROUP BY Shipping_Mode
 ORDER BY late_delivery_risk_total DESC;
+
+
+------------------------- Customer Analysis -------------------------
+-- Power BI shows: 7K
+SELECT 
+    COUNT(DISTINCT Customer_Name) AS unique_customers
+FROM supplychain;
+
+-- Power BI shows: $601.12
+SELECT 
+    ROUND(SUM(Sales) / COUNT(DISTINCT Customer_Name), 2) AS revenue_per_customer
+FROM supplychain;
+
+-- Repeat Customers (customers with more than 1 order)
+SELECT
+    COUNT(*) AS Repeat_Customers
+FROM (
+    SELECT Customer_Name
+    FROM supplychain
+    GROUP BY Customer_Name
+    HAVING COUNT(*) > 1
+) AS repeated;
+
+-- Repeat Customer Rate
+SELECT
+    ROUND(
+        100.0 * COUNT(CASE WHEN order_count > 1 THEN 1 END)
+        / COUNT(*), 2
+    ) AS Repeat_Customer_Rate_Pct
+FROM (
+    SELECT 
+        Customer_Name,
+        COUNT(*) AS order_count
+    FROM supplychain
+    GROUP BY Customer_Name
+) AS customer_orders;
+
+-- Power BI shows: Consumer 2.23M, Corporate 1.31M, Home Office 0.75M
+SELECT 
+    Customer_Segment,
+    ROUND(SUM(Sales), 2) AS total_revenue
+FROM supplychain
+GROUP BY Customer_Segment
+ORDER BY total_revenue DESC;
