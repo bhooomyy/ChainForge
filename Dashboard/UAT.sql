@@ -256,3 +256,57 @@ FROM supplychain
 GROUP BY Product_Name
 ORDER BY total_profit DESC
 LIMIT 10;
+
+
+
+------------------------- Regional Analysis -------------------------
+-- Top 1 Market by Revenue
+SELECT
+    Market,
+    ROUND(SUM(Sales), 2) AS Total_Revenue
+FROM supplychain
+GROUP BY Market
+ORDER BY Total_Revenue DESC
+LIMIT 1;
+
+-- Top 1 Region by Revenue
+SELECT
+    Order_Region,
+    ROUND(SUM(Sales), 2) AS Total_Revenue
+FROM supplychain
+GROUP BY Order_Region
+ORDER BY Total_Revenue DESC
+LIMIT 1;
+
+-- Top Region by Profit
+SELECT
+    Order_Region,
+    ROUND(SUM(Order_Profit_Per_Order), 2) AS Total_Profit
+FROM supplychain
+GROUP BY Order_Region
+ORDER BY Total_Profit DESC
+LIMIT 1;
+
+-- Highest Late Rate Region
+SELECT
+    Order_Region,
+    ROUND(
+        100.0 * COUNT(CASE WHEN Delivery_Status = 'Late delivery' THEN 1 END)
+        / COUNT(*), 2
+    ) AS Late_Rate_Pct
+FROM supplychain
+GROUP BY Order_Region
+ORDER BY Late_Rate_Pct DESC
+LIMIT 1;
+
+-- Regional Market Share by Market in %
+SELECT
+    Market,
+    ROUND(SUM(Sales), 2)                                AS Total_Revenue,
+    CONCAT(ROUND(
+        100.0 * SUM(Sales)
+        / (SELECT SUM(Sales) FROM supplychain), 2
+    ),'%')                                                   AS Market_Share_Pct
+FROM supplychain
+GROUP BY Market
+ORDER BY Market_Share_Pct DESC;
