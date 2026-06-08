@@ -125,3 +125,47 @@ SELECT
 FROM supplychain
 GROUP BY Market
 ORDER BY total_revenue DESC;
+
+
+
+------------------------- Delivery performance ------------------------- 
+-- On Time Rate
+SELECT
+    ROUND(
+        100.0 * COUNT(CASE WHEN Delivery_Status = 'Shipping on time' THEN 1 END)
+        / COUNT(*), 2
+    ) AS On_Time_Rate_Pct
+FROM supplychain;
+
+-- Avg Delay Days
+SELECT
+    ROUND(
+        AVG(Days_for_shipping_real - Days_for_shipment_scheduled), 0
+    ) AS Avg_Delay_Days
+FROM supplychain
+WHERE Delivery_Status = 'Late delivery';
+
+-- Shipping Efficiency Overall %
+SELECT
+    ROUND(
+        100.0 * AVG(Days_for_shipment_scheduled) 
+        / NULLIF(AVG(Days_for_shipping_real), 0), 2
+    ) AS Shipping_Efficiency_Pct
+FROM supplychain;
+
+-- Cancelled Orders Overall %
+SELECT
+    ROUND(
+        100.0 * COUNT(CASE WHEN Delivery_Status = 'Shipping canceled' THEN 1 END)
+        / COUNT(*), 2
+    ) AS Cancelled_Orders_Pct
+FROM supplychain;
+
+-- Power BI shows: Standard Class highest
+SELECT 
+    Shipping_Mode,
+    SUM(Late_delivery_risk) AS late_delivery_risk_total,
+    ROUND(100.0 * SUM(Late_delivery_risk) / COUNT(*), 2) AS late_rate_pct
+FROM supplychain
+GROUP BY Shipping_Mode
+ORDER BY late_delivery_risk_total DESC;
